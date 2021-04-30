@@ -29,7 +29,7 @@ export default function ProductCard({ item }) {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image={item.img}
+          image={item.image}
           title="Contemplative Reptile"
         />
         <CardContent>
