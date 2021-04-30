@@ -5,7 +5,7 @@ const AddProduct = () => {
     const [product, setProduct] = useState({
         title: '',
         description: '',
-        img: '',
+        image: '',
         price: '',
         gender: '',
         size:''
@@ -25,7 +25,7 @@ const AddProduct = () => {
         setProduct({
             title: '',
             description: '',
-            img: '',
+            image: '',
             price: '',
             gender: '',
             size:''
@@ -38,7 +38,7 @@ const { postProduct } = useContext(productContext)
         <div className='inps'>
             <input className='inp-add' type='text' name='title' value={product.title} onChange={handleValues} placeholder='Наименование товара'/>
             <input className='inp-add' type='text' name='description' value={product.description} onChange={handleValues} placeholder='Описание товара'/>
-            <input className='inp-add' type='text' name='img' value={product.img} onChange={handleValues} placeholder='URL изображения'/>
+            <input className='inp-add' type='text' name='image' value={product.image} onChange={handleValues} placeholder='URL изображения'/>
             <input className='inp-add' type='text' name='price' value={product.price} onChange={handleValues} placeholder='Цена товара'/>
             <select value={product.gender}>
                 <option>Man</option>

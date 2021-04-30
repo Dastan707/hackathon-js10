@@ -1,8 +1,10 @@
 import { Grid, Paper, makeStyles } from '@material-ui/core';
 import React, { useContext, useState } from 'react';
-import { useHistory } from 'react-router';
+// import { useHistory } from 'react-router';
 import { productContext } from '../../contexts/ProductContext';
 import ProductsList from '../ProductsList/ProductsList';
+import './Content.css'
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -15,31 +17,34 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Content = () => {
-    const history = useHistory();
     const classes = useStyles();
-    const [searchValue, setSearchValue] = useState(getSearchValue());
-    const { getProducts } = useContext(productContext)
+    const { search, searchData } = useContext(productContext);
+    const [searchValue, setSearchValue] = useState('');
 
 
     const handleValue = (e) => {
-        const search = new URLSearchParams(history.location.search);
-        search.set('q', e.target.value)
-        history.push(`${history.location.pathname}?${search.toString()}`)
-        setSearchValue(e.target.value)
-        getProducts(history)
-    }
-
-    function getSearchValue(){
-        const search = new URLSearchParams(history.location.search);
-        return search.get('q')
+        setSearchValue(e.target.value);
+        search(e.target.value);
+        console.log(e.target.value);
+        console.log(searchData);
     }
 
     return (
         <Grid item md={9}>
+            <div className="search-item">
+
+            <input onChange={handleValue} type='text' />
+            <div className={ searchValue ? 'search-result' : 'close' }>
+                                {searchData.map(item => (
+                                    <Link to={`/details/${item.id}`}>
+                                        <div>{item.title}</div>
+                                    </Link>
+                                ))}
+                                </div>
+                                </div>
             <Paper className={classes.paper}>
                 <ProductsList />
             </Paper>
-            <input onChange={handleValue} value={searchValue} type='text' />
         </Grid>
     );
 };
