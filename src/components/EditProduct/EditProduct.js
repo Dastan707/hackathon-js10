@@ -34,7 +34,7 @@ const EditProduct = (props) => {
     function handleEditInputImage(e){
         let newEditedProduct = {
             ...newEditItem,
-            img: e.target.value
+            image: e.target.value
         }
         setEditItem(newEditedProduct)
     } 
@@ -73,7 +73,7 @@ const EditProduct = (props) => {
         <div>
             <input className='inp-add' type='text' name='title' value={newEditItem.title} onChange={handleEditInputTitle} placeholder='Наименование товара'/>
             <input className='inp-add' type='text' name='description' value={newEditItem.description} onChange={handleEditInputDescription} placeholder='Описание товара'/>
-            <input className='inp-add' type='text' name='img' value={newEditItem.img} onChange={handleEditInputImage} placeholder='URL изображения'/>
+            <input className='inp-add' type='text' name='image' value={newEditItem.image} onChange={handleEditInputImage} placeholder='URL изображения'/>
             <input className='inp-add' type='text' name='price' value={newEditItem.price} onChange={handleEditInputPrice} placeholder='Цена товара'/>
             <button onClick={() => saveProduct(newEditItem, props.history)}>Save</button>
         </div>
