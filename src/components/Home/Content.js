@@ -37,7 +37,10 @@ const Content = () => {
             <div className={ searchValue ? 'search-result' : 'close' }>
                                 {searchData.map(item => (
                                     <Link to={`/details/${item.id}`}>
-                                        <div>{item.title}</div>
+                                        <div className='search-items'>
+                                            <img src={item.image} alt='images'/>
+                                            {item.title}
+                                        </div>
                                     </Link>
                                 ))}
                                 </div>
