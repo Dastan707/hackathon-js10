@@ -89,6 +89,7 @@ const ProductContextProvider = ({ children }) => {
 
     async function search(value){
         let { data } = await axios.get(`${JSON_API}?q=${value}`)
+        console.log(data)
         dispatch({
             type: "SEARCH",
             payload: data
