@@ -7,8 +7,7 @@ const AddProduct = () => {
         description: '',
         image: '',
         price: '',
-        gender: '',
-        size:''
+        category: ''
     });
 
     const handleValues = (e) => {
@@ -27,8 +26,7 @@ const AddProduct = () => {
             description: '',
             image: '',
             price: '',
-            gender: '',
-            size:''
+            category: '',
 
         })
     }
@@ -40,11 +38,7 @@ const { postProduct } = useContext(productContext)
             <input className='inp-add' type='text' name='description' value={product.description} onChange={handleValues} placeholder='Описание товара'/>
             <input className='inp-add' type='text' name='image' value={product.image} onChange={handleValues} placeholder='URL изображения'/>
             <input className='inp-add' type='text' name='price' value={product.price} onChange={handleValues} placeholder='Цена товара'/>
-            <select value={product.gender}>
-                <option>Man</option>
-                <option>Woman</option>
-            </select>
-            <input className='inp-add' type='number' name='size' value={product.size} onChange={handleValues}/>
+            <input className='inp-add' type='text' name='category' value={product.category} onChange={handleValues} placeholder='Категория'/>
             <button onClick={handleClick}>Add</button>
         </div>
     );

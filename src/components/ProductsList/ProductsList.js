@@ -6,8 +6,7 @@ import Pagination from '@material-ui/lab/Pagination';
 import { useHistory } from 'react-router-dom'
 
 const ProductsList = () => {
-    // const { getProducts, productsData } = useContext(productContext)
-    const { getProductsData, productsData, paginationPages } = useContext(productContext)
+    const { productsData, paginationPages, getProducts } = useContext(productContext)
     const history = useHistory()
 
     function getPage() {
@@ -21,16 +20,12 @@ const ProductsList = () => {
         search.set('_page', page)
         history.push(`${history.location.pathname}?${search.toString()}`)
         setPage(page)
-        getProductsData(history)
+        getProducts(history)
     }
 
     useEffect(() => {
-        getProductsData(history)}, []
-    )
-
-    // useEffect(() => {
-    //     getProducts()
-    // }, [])
+        getProducts(history)
+    }, [])
     return (
         <>
         <Grid container spacing ={3}>

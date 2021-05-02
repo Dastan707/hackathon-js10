@@ -1,8 +1,6 @@
 // import React, { useEffect, useReducer, useState } from 'react';
 // import { AUTH_API } from '../helpers/constants';
 // import axios from 'axios';
-// import app from '../]firebase';
-
 // export const authContext = React.createContext();
 
 // const INIT_STATE = {}

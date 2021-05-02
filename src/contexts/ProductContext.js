@@ -15,9 +15,7 @@ const INIT_STATE = {
 
 const reducer = (state = INIT_STATE, action) => {
     switch (action.type) {  
-        // case "GET_PRODUCTS":
-        //     return {...state, productsData: action.payload };
-        case "GET_PRODUCTS_DATA":
+        case "GET_PRODUCTS":
             return {...state, productsData: action.payload.data, paginationPages: Math.ceil(action.payload.headers["x-total-count"] / 4)}
         case "GET_PRODUCTS_DETAILS":
             return {...state, productsDetails: action.payload };
@@ -33,13 +31,15 @@ const reducer = (state = INIT_STATE, action) => {
 const ProductContextProvider = ({ children }) => {
 
 
-    const getProductsData = async (history) => {
+    async function getProducts(history){
         const search = new URLSearchParams(history.location.search)
         search.set('_limit', 4)
         history.push(`${history.location.pathname}?${search.toString()}`)
-        let res = await axios(`${JSON_API}?_limit=4&${window.location.search}`)
-        dispatch({
-            type: "GET_PRODUCTS_DATA",
+
+        let res = await axios.get(`${JSON_API}${window.location.search}`)
+        
+        dispatch ({
+            type: "GET_PRODUCTS",
             payload: res
         })
     }
@@ -50,14 +50,6 @@ const ProductContextProvider = ({ children }) => {
     }
 
 
-
-    // async function getProducts() {
-    //     let { data } = await axios.get(`${JSON_API}`)
-    //     dispatch({
-    //         type: "GET_PRODUCTS",
-    //         payload: data
-    //     });
-    // }
 
     async function getProductsDetails(id) {
         let { data } = await axios.get(`${JSON_API}/${id}`)
@@ -74,7 +66,7 @@ const ProductContextProvider = ({ children }) => {
 
     async function deleteProduct(id) {
         await axios.delete(`${JSON_API}/${id}`)
-        getProductsData()
+        getProducts()
     }
 
 
@@ -105,8 +97,7 @@ const ProductContextProvider = ({ children }) => {
             productToEdit: state.productToEdit,
             searchData: state.searchData,
             postProduct,
-            // getProducts,
-            getProductsData,
+            getProducts,
             paginationPages: state.paginationPages,
             getProductsDetails,
             saveProduct,
