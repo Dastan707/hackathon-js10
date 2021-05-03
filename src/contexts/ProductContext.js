@@ -47,6 +47,7 @@ const ProductContextProvider = ({ children }) => {
 
     function postProduct(product) {
         axios.post(`${JSON_API}`, product)
+        
     }
 
 
