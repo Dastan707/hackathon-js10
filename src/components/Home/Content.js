@@ -1,6 +1,5 @@
 import { Grid, Paper, makeStyles } from '@material-ui/core';
 import React, { useContext, useState } from 'react';
-// import { useHistory } from 'react-router';
 import { productContext } from '../../contexts/ProductContext';
 import ProductsList from '../ProductsList/ProductsList';
 import './Content.css'
@@ -38,7 +37,7 @@ const Content = () => {
                                 {searchData.map(item => (
                                     <Link to={`/details/${item.id}`}>
                                         <div className='search-items'>
-                                            <img src={item.image} alt='images'/>
+                                            <img src={item.image} alt='images'/><br></br>
                                             {item.title}
                                         </div>
                                     </Link>

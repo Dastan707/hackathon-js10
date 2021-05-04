@@ -1,9 +1,8 @@
-
 {
   "products": [
     {
       "id": 0,
-      "title": "Nike Air Zoom Pegasus111111111111",
+      "title": "Nike Air Zoom Pegasus",
       "price": "9999",
       "image": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/e3765f46-d57b-4aa1-a0dd-be5bbb0f36e1/%D0%B1%D0%B5%D0%B3%D0%BE%D0%B2%D1%8B%D0%B5-%D0%BA%D1%80%D0%BE%D1%81%D1%81%D0%BE%D0%B2%D0%BA%D0%B8-air-zoom-pegasus-38-flyease-VJKmvv.png",
       "description": "Твоя крылатая рабочая лошадка возвращается. Кроссовки Nike Air Zoom Pegasus 38 с упругой подошвой из пеноматериала как в предыдущей версии обеспечивают амортизацию при каждом шаге. Прочный верх из сетки обеспечивает комфорт, а система FlyEase позволяет быстро надевать обувь.",
@@ -42,52 +41,12 @@
       "category": "Баскетбол"
     },
     {
-      "title": "1",
-      "description": "1",
-      "image": "1",
-      "price": "1",
-      "category": "Футбол",
-      "id": 5
-    },
-    {
-      "title": "1",
-      "description": "1",
-      "image": "1",
-      "price": "2",
-      "category": "Баскетбол",
-      "id": 6
-    },
-    {
-      "title": "1",
-      "description": "1",
-      "image": "1",
-      "price": "1",
-      "category": "Бег",
-      "id": 7
-    },
-    {
-      "title": "",
-      "description": "",
-      "image": "",
-      "price": "",
-      "category": "",
-      "id": 8
-    },
-    {
-      "title": "1",
-      "description": "1",
-      "image": "1",
-      "price": "1",
-      "category": "Бег",
-      "id": 9
-    },
-    {
       "title": "123",
-      "description": "123",
+      "description": "231",
       "image": "123",
-      "price": "13",
-      "category": "Футбол",
-      "id": 10
+      "price": "123",
+      "category": "13",
+      "id": 5
     }
   ]
 }

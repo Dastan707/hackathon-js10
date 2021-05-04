@@ -13,9 +13,9 @@ const Sidebar = ({ history }) => {
   function getMemory(){
     const search = new URLSearchParams(history.location.search);
     return search.get('category');
-}
+} 
 const handleChangeMemory = (e) => {
-    if (e.target.value === "all") {
+    if (e.target.value === "Все") {
         history.push(`${history.location.pathname.replace("category")}`);
         getProducts(history);
         return;
@@ -35,7 +35,7 @@ const handleChangeMemory = (e) => {
         <FormControlLabel value="Бег" control={<Radio />} label="Бег" />
         <FormControlLabel value="Футбол" control={<Radio />} label="Футбол" />
         <FormControlLabel value="Баскетбол" control={<Radio />} label="Баскетбол" />
-        <FormControlLabel value="all" control={<Radio />} label="all" />
+        <FormControlLabel value="Все" control={<Radio />} label="Все" />
       </RadioGroup>
     </FormControl>
   );
