@@ -22,7 +22,7 @@ const Header = () => {
     }
     return (
         <div className="header">
-            <a className="header_title" href="#">DEALERS</a>
+            <a className="header_title" href="#">BUT KIIM SHOP</a>
             <div className='header_list'>
                 <ul className="navbar__links">
                     <li className="navbar_item"><a className="navbar_itema" href="#">COLLECTION</a></li>
