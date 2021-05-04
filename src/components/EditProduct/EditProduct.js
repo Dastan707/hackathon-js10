@@ -1,11 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { productContext } from '../../contexts/ProductContext';
+import './EditProduct.css'
 
 const EditProduct = (props) => {
-    // const { getProductsDetails, saveProduct, productDetails } = useContext(productContext);
-    // const [editedProduct, setEditedProduct] = useState({});
 
-    
     const { productToEdit, saveProduct } = useContext(productContext)
     const [newEditItem, setEditItem] = useState(productToEdit)
 
@@ -55,36 +53,14 @@ const EditProduct = (props) => {
         setEditItem(newEditedProduct)
     } 
 
-    
-
-  
-
-    // const  handleValue = (e) => {
-    //     let newProduct = {
-    //         ...editedProduct,
-    //         [e.target.name] : e.target.value
-    //     }
-    //     console.log(editedProduct)
-    //     console.log(newProduct);
-    //     setEditedProduct(newProduct)
-    // }
-
-    // const handleSave = () => {
-    //     saveProduct(props.match.params.id, editedProduct)
-    // }
-
-    // useEffect(() => {
-    //     getProductsDetails(props.match.params.id)
-    // }, [])
-
     return (
-        <div>
-            <input className='inp-add' type='text' name='title' value={newEditItem.title} onChange={handleEditInputTitle} placeholder='Наименование товара'/>
-            <input className='inp-add' type='text' name='description' value={newEditItem.description} onChange={handleEditInputDescription} placeholder='Описание товара'/>
-            <input className='inp-add' type='text' name='image' value={newEditItem.image} onChange={handleEditInputImage} placeholder='URL изображения'/>
-            <input className='inp-add' type='text' name='price' value={newEditItem.price} onChange={handleEditInputPrice} placeholder='Цена товара'/>
-            <input className='inp-add' type='text' name='price' value={newEditItem.category} onChange={handleEditInputCategory} placeholder='Категория'/>
-            <button onClick={() => saveProduct(newEditItem, props.history)}>Save</button>
+        <div className='inps-edit'>
+            <input className='inp-edit' type='text' name='title' value={newEditItem.title} onChange={handleEditInputTitle} placeholder='Наименование товара'/>
+            <input className='inp-edit' type='text' name='description' value={newEditItem.description} onChange={handleEditInputDescription} placeholder='Описание товара'/>
+            <input className='inp-edit' type='text' name='image' value={newEditItem.image} onChange={handleEditInputImage} placeholder='URL изображения'/>
+            <input className='inp-edit' type='text' name='price' value={newEditItem.price} onChange={handleEditInputPrice} placeholder='Цена товара'/>
+            <input className='inp-edit' type='text' name='price' value={newEditItem.category} onChange={handleEditInputCategory} placeholder='Категория'/>
+            <button className='btn-edit' onClick={() => saveProduct(newEditItem, props.history)}>Save</button>
         </div>
     );
 };
