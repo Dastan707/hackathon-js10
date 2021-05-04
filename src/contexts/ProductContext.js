@@ -12,7 +12,6 @@ const INIT_STATE = {
     paginationPages: 1,
     cart: {},
     cartLength: getCountProductInCart()
-
 };
 
 const reducer = (state = INIT_STATE, action) => {

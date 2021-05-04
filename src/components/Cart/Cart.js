@@ -4,6 +4,7 @@ import { calcTotalPrice } from '../../helpers/calcPrice';
 
 const Cart = () => {
     const { getCart, cart, changeProductCount } = useContext(productContext);
+    
 
     useEffect(() => {
         getCart()
