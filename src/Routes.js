@@ -25,7 +25,6 @@ const Routes = () => {
                 <Route exact path='/details/:id' component={ProductsDetails} />
                 <Route exact path='/edit' component={EditProduct} />
                 <Route exact path='/cart' component={Cart}/>
-                
             </Switch>
             </Router>
             </ProductContextProvider>

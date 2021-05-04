@@ -14,7 +14,6 @@ const INIT_STATE = {
     cartLength: getCountProductInCart()
 };
 
-
 const reducer = (state = INIT_STATE, action) => {
     switch (action.type) {  
         // case "GET_PRODUCTS":

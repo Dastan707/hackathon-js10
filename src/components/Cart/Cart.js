@@ -9,6 +9,7 @@ const Cart = () => {
         getCart()
     }, [])
 
+    
     return (
         <div className='cart'>  
             <div>
