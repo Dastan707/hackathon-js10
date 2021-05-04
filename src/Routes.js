@@ -10,7 +10,6 @@ import Register from './components/Register/Register';
 import AuthContextProvider from './contexts/AuthContext';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-
 const Routes = () => {
 
     return (

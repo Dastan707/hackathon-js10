@@ -33,7 +33,7 @@ const ProductContextProvider = ({ children }) => {
     const history = useHistory()
     const  getProducts = async (history) =>{
         const search = new URLSearchParams(history.location.search)
-        search.set('_limit', 4)
+        search.set('_limit', 6)
         history.push(`${history.location.pathname}?${search.toString()}`)
         let res = await axios.get(`${JSON_API}${window.location.search}`)
         dispatch({
