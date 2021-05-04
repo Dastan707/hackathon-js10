@@ -1,7 +1,8 @@
 import React from 'react';
-import {Img6} from '../../images/adress_svg'
-import {Img7} from '../../images/phone_svg'
-import {Img8} from '../../images/email_svg'
+import Img6 from '../../assets/images/adress_svg.png'
+import Img7 from '../../assets/images/phone_svg.png'
+import Img8 from '../../assets/images/email_svg.png'
+import './Footer.css'
 
 const Footer = () => {
     return (
@@ -12,16 +13,6 @@ const Footer = () => {
                     <div className="footer_row1__block1">
                         <h3 className="footer_row1__h3">About us</h3>
                         <p className="footer_p">Lorem ipsum dolor sit,<br/> amet consectetur adipisicing elit.<br/>Dolore alias laboriosam expedita!<br/> Molestiae, eos sapiente et dolore <br/>quis consequuntur eius nobis,<br/> vero corrupti suscipit repudiandae <br/> illo vel asperiores porro ab.</p>
-                    </div>
-                    <div className="footer_row1__block2">
-                        <form action="#" method="POST" className="footer_form">
-                            <label for="email_subscribe" className="footer_label"><strong>Subscribe</strong></label>
-                            <div className="footer_form__group">
-                                <input type="text" className="footer_input__text" placeholder="Email"/>
-                                <input type="submit" className="footer_input__submit" value="Send"/>
-                            </div>
-                        </form>
-
                     </div>
                 </div>
                 <div className="footer_row2">

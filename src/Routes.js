@@ -9,15 +9,16 @@ import LogIn from './components/LogIn/LogIn';
 import Register from './components/Register/Register';
 import AuthContextProvider from './contexts/AuthContext';
 import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 
 const Routes = () => {
 
     return (
         <div>
             <ProductContextProvider>
-                <AuthContextProvider>
+            <AuthContextProvider>
             <Router>
-                <Header/>
+            <Header/>
             <Switch>
                 <Route exact path='/' component={Home} />
                 <Route exact path='/login' component={LogIn} />
@@ -26,8 +27,9 @@ const Routes = () => {
                 <Route exact path='/details/:id' component={ProductsDetails} />
                 <Route exact path='/edit' component={EditProduct} />
             </Switch>
+            <Footer />
             </Router>
-                </AuthContextProvider>
+            </AuthContextProvider>
             </ProductContextProvider>
         </div>
     );
