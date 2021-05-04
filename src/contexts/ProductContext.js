@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import axios from 'axios';
 import { JSON_API } from '../helpers/constants'
-
+import { calcSubPrice, calcTotalPrice , getCountProductInCart} from '../helpers/calcPrice';
 export const productContext = React.createContext();
 
 const INIT_STATE = {
@@ -9,7 +9,9 @@ const INIT_STATE = {
     // productsDetails: null,
     productToEdit: [],
     searchData: [],
-    paginationPages: 1
+    paginationPages: 1,
+    cart: {},
+    cartLength: getCountProductInCart()
 
 };
 
@@ -25,12 +27,23 @@ const reducer = (state = INIT_STATE, action) => {
             return {...state, productToEdit: action.payload };
         case "SEARCH" :
             return {...state, searchData: action.payload};
-        default:
-            return state;
+        case "GET_CART" :
+            return {
+                ...state,
+                cart: action.payload
+            };
+        case "CHANGE_CART_COUNT" :
+            return {
+                ...state,
+                cartLength: action.payload
+            }
+            default: return state
+        }
+        
     }
-}
-
-const ProductContextProvider = ({ children }) => {
+        
+        const ProductContextProvider = ({ children }) => {
+            const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
 
     const getProductsData = async (history) => {
@@ -87,6 +100,7 @@ const ProductContextProvider = ({ children }) => {
         })
     }
 
+
     async function search(value){
         let { data } = await axios.get(`${JSON_API}?q=${value}`)
         console.log(data)
@@ -96,7 +110,79 @@ const ProductContextProvider = ({ children }) => {
         })
     }
 
-    const [state, dispatch] = useReducer(reducer, INIT_STATE);
+    function addProductToCart(product){ // Корзина
+        let cart = JSON.parse(localStorage.getItem('cart'));
+        if(!cart){
+            cart = {
+                products: [],
+                totalPrice: 0
+            }
+        }
+
+        let newProduct = {
+            item: product,
+            count: 1,
+            subPrice: 0
+        }
+        
+        let filteredCart = cart.products.filter(elem => elem.item.id === product.id)
+        if(filteredCart.length > 0 ){
+            cart.products = cart.products.filter(elem => elem.item.id !== product.id)
+        }else{
+            cart.products.push(newProduct)
+        }
+
+        newProduct.subPrice = calcSubPrice(newProduct)
+        cart.totalPrice = calcTotalPrice(cart.products)
+        localStorage.setItem('cart', JSON.stringify(cart))
+
+        dispatch({
+            type: "CHANGE_CART_COUNT",
+            payload: cart.products.length
+        })
+    }
+
+    function getCart(){
+        let cart = JSON.parse(localStorage.getItem('cart'));
+        if(!cart){
+            cart = {
+                products: [],
+                totalPrice: 0
+            }
+        }
+        dispatch({
+            type: "GET_CART",
+            payload: cart
+        })
+    }
+
+    function changeProductCount(count, id){
+        let cart = JSON.parse(localStorage.getItem('cart'));
+        cart.products = cart.products.map(elem => {
+            if(elem.item.id === id){
+                elem.count = count
+                elem.subPrice = calcSubPrice(elem)
+            }
+            return elem
+        })
+        cart.totalPrice = calcTotalPrice(cart.products)
+        localStorage.setItem('cart', JSON.stringify(cart))
+        getCart()
+    }
+
+
+    function checkProductInCart(id){
+        let cart = JSON.parse(localStorage.getItem('cart'));
+        if(!cart){
+            cart = {
+                products: [],
+                totalPrice: 0
+            }
+        }
+        let newCart = cart.products.filter(elem => elem.item.id === id)
+        return newCart.length > 0 ? true : false 
+    }
+
 
     return (
         <productContext.Provider value={{
@@ -104,6 +190,8 @@ const ProductContextProvider = ({ children }) => {
             // productsDetails: state.productsDetails,
             productToEdit: state.productToEdit,
             searchData: state.searchData,
+            cart: state.cart,
+            cartLength: state.cartLength,
             postProduct,
             // getProducts,
             getProductsData,
@@ -112,7 +200,12 @@ const ProductContextProvider = ({ children }) => {
             saveProduct,
             deleteProduct,
             editProduct,
-            search
+            search,
+            addProductToCart,
+            getCart,
+            changeProductCount,
+            checkProductInCart
+            
         }}>
             {children}
         </productContext.Provider>
