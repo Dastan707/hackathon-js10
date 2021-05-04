@@ -4,6 +4,7 @@ import { productContext } from '../../contexts/ProductContext';
 import ProductsList from '../ProductsList/ProductsList';
 import './Content.css'
 import { Link } from 'react-router-dom';
+import Middle from '../Middle/Middle';
 
 const useStyles = makeStyles(theme => ({
     root: {
