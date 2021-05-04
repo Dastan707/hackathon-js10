@@ -1,13 +1,30 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { productContext } from '../../contexts/ProductContext';
 import ProductCard from '../ProductsCard/ProductsCard'
 import { Grid } from '@material-ui/core'
+import Pagination from '@material-ui/lab/Pagination';
+import { useHistory } from 'react-router-dom'
 
 const ProductsList = () => {
-    const { getProducts, productsData } = useContext(productContext)
+    const { productsData, paginationPages, getProducts } = useContext(productContext)
+    const history = useHistory()
+
+    function getPage() {
+        const search = new URLSearchParams(history.location.search)
+        // console.log(history);
+        return search.get('_page')
+    }
+    const [page, setPage] = useState(getPage())
+    const handlePage = (event, page) => {
+        const search = new URLSearchParams(history.location.search)
+        search.set('_page', page)
+        history.push(`${history.location.pathname}?${search.toString()}`)
+        setPage(page)
+        getProducts(history)
+    }
 
     useEffect(() => {
-        getProducts()
+        getProducts(history)
     }, [])
     return (
         <>
@@ -16,6 +33,7 @@ const ProductsList = () => {
                 <ProductCard key={item.id} item={item} />
             ))}
         </Grid>
+        <Pagination page={+page} onChange={(event, page) => {handlePage(event, page)}} count={paginationPages} color="primary" />
         </>
     );
 };
