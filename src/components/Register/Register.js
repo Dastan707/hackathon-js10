@@ -22,7 +22,7 @@ const Register = () => {
             <div className="login-page">
                 <div className="form">
                     <form onSubmit={(event) => registerUser(event, newUser, history)}>
-                    <h5>Register</h5>
+                    <h3>Register</h3>
                         <input onChange={handleInputs} type="text" id="email" name="email" placeholder="email" />
                         <input onChange={handleInputs} type="text" id="password" name="password" placeholder="password" />
                         <button type="submit" > Register </button>                    

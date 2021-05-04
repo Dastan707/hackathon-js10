@@ -20,7 +20,7 @@ const LogIn = () => {
             <div className="login-page">
                 <div className="form">
                     <form onSubmit={(event) => loginUser(event, userData, history)}>
-                        <h5>Sign In</h5>
+                        <h3>Sign In</h3>
                         <input onChange={handleInputs} type="text" id="email" name="email" placeholder="email" />
                         <input onChange={handleInputs} type="text" id="password" name="password" placeholder="password" />
                         <button type="submit">login</button>
