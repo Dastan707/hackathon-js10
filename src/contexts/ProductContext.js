@@ -17,10 +17,10 @@ const INIT_STATE = {
     cartLength: getCountProductInCart()
 };
 
-const reducer = (state = INIT_STATE, action) => {
+const reducer = (state=INIT_STATE, action) =>{
     switch (action.type) {
         case "GET_PRODUCTS":
-            return { ...state, productsData: action.payload.data, paginationPages: Math.ceil(action.payload.headers["x-total-count"] / 4) }
+            return { ...state, productsData: action.payload.data, paginationPages: Math.ceil(action.payload.headers["x-total-count"] / 4) };
         case "GET_PRODUCTS_DETAILS":
             return { ...state, productsDetails: action.payload };
         case "EDIT_PRODUCT":
@@ -36,12 +36,11 @@ const reducer = (state = INIT_STATE, action) => {
             return {
                 ...state,
                 cartLength: action.payload
-            }
+            };
         default:
             return state;
     }
 }
-const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
 
 
