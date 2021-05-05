@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 const useStyles = makeStyles((theme) => ({
   rootMenu: {
     backgroundColor: '#f0f0f0',
+    margin: 0
   },
   paperMenu: {
     width: '170px',
