@@ -58,13 +58,6 @@ export default function ProductCard({ item }) {
         <Button onClick={() => deleteProduct(item.id)} size="small" color="primary">
           Delete
         </Button>
-        <Button
-           onClick={()=> addProductToCart(item)}
-          size="small" 
-          variant="outlined" 
-          color="secondary">
-        В корзину
-        </Button>
       </CardActions>
     </Card>
   );

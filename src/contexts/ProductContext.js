@@ -12,7 +12,6 @@ const INIT_STATE = {
     // productsDetails: null,
     productToEdit: [],
     searchData: [],
-    paginationPages: 1,
     cart: {},
     cartLength: getCountProductInCart()
 };
@@ -193,8 +192,6 @@ const ProductContextProvider = ({ children }) => {
             cartLength: state.cartLength,
             productToEdit: state.productToEdit,
             searchData: state.searchData,
-            cart: state.cart,
-            cartLength: state.cartLength,
             postProduct,
             getProducts,
             getProductsDetails,
