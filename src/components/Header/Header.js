@@ -1,7 +1,4 @@
 import React, { useContext, useState } from 'react';
-// import { Img1 } from '../../images/magnifier_svg'
-// import { Img2 } from 'https://cdn2.iconfinder.com/data/icons/celebration-party/48/13-512.png'
-// import { Img3 } from '../../images/cart'
 import './Header.css';
 import { productContext } from '../../contexts/ProductContext';
 import { Link } from 'react-router-dom';
@@ -45,9 +42,9 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar_right">
-                {/* <a href="#"><img className="img_magnifier" src={Img1} alt=""/></a> */}
-                <a href="#"><img className="img_like" src='https://cdn2.iconfinder.com/data/icons/celebration-party/48/13-512.png' alt="" /></a>
-                {/* <a href="#"><img className="img_cart" src={Img3} alt=""/></a> */}
+                <a href="#">
+                    <img className="img_like" src='https://cdn2.iconfinder.com/data/icons/celebration-party/48/13-512.png' alt="" />
+                    </a>
             </div>
         </div>
     );

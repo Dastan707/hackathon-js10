@@ -64,9 +64,9 @@ const AddProduct = () => {
                     {/* <Link color="inherit" href="/" onClick={() => handleClickBreadCrumps(history)}>
                         Home
                 </Link> */}
-                <Link to='/' >
-                    <Typography>Home</Typography>
-                </Link>
+                    <Link to='/' >
+                        <Typography>Home</Typography>
+                    </Link>
 
                     <Typography color="textPrimary">Add Product</Typography>
                 </Breadcrumbs>

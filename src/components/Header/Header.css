@@ -6,8 +6,9 @@
     font-size: 16px;
     text-decoration: none;
 }
-.navbar_itema{
+.navbar_item a:hover{
     color: #207dff;
+    font-size: 18px;
 }
 .header{
     display: flex;

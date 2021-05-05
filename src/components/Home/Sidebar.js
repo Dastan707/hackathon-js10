@@ -5,12 +5,11 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import { productContext } from '../../contexts/ProductContext';
-import { Grid, makeStyles, Paper, Slider } from "@material-ui/core";
-import MenuItem from '@material-ui/core/MenuItem';
-import MenuList from '@material-ui/core/MenuList';
+import { makeStyles, Paper } from "@material-ui/core";
+
 const useStyles = makeStyles((theme) => ({
   root: {
-    // flexGrow: 1,
+    backgroundColor: '#f0f0f0',
   },
   paper: {
     // marginRight: theme.spacing(2),
@@ -54,7 +53,7 @@ const Sidebar = ({ history }) => {
             <FormControlLabel value="Баскетбол" control={<Radio />} label="Баскетбол" />
             <FormControlLabel value="Все" control={<Radio />} label="Все" />
           </RadioGroup>
-     </Paper>
+        </Paper>
       </FormControl>
     </div>
   );

@@ -10,25 +10,28 @@ import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles((theme) => ({
     cardGrid: {
-      paddingTop: theme.spacing(8),
-      paddingBottom: theme.spacing(8),
+        paddingTop: theme.spacing(8),
+        paddingBottom: theme.spacing(8),
     },
     card: {
-      height: '100%',
-      display: 'flex',
-      flexDirection: 'column',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
     },
     cardContent: {
         flexGrow: 1,
-      height: '100%',
+        height: '100%',
 
+    },
+    pagination: {
+        display: 'flex',
+        justifyContent: 'center',
+        marginTop: '15px'
     }
-  }));
-  const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  
-  
-  
-  const ProductsList = () => {
+}));
+
+
+const ProductsList = () => {
     const classes = useStyles();
     const { productsData, paginationPages, getProducts } = useContext(productContext)
     const history = useHistory()
@@ -52,19 +55,27 @@ const useStyles = makeStyles((theme) => ({
     }, [])
     return (
         <>
-        <Container className={classes.cardGrid} maxWidth="md">
+            <Container className={classes.cardGrid} maxWidth="md">
 
-        <Grid container spacing={4}>
-            {productsData.map(item => (
-                <Grid  xs={12} sm={6} md={4}>
-                    <CardContent className={classes.cardContent}>
-                <ProductCard key={item.id} item={item} />
-                    </CardContent>
+                <Grid container spacing={4}>
+                    {productsData.map(item => (
+                        <Grid xs={12} sm={6} md={4}>
+                            <CardContent className={classes.cardContent}>
+                                <ProductCard key={item.id} item={item} />
+                            </CardContent>
+                        </Grid>
+                    ))}
                 </Grid>
-                ))}
-        </Grid>
-        <Pagination page={+page} onChange={(event, page) => {handlePage(event, page)}} count={paginationPages} variant="outlined" shape="rounded" color="primary" />
-        </Container>
+                <Pagination
+                    className={classes.pagination}
+                    page={+page}
+                    onChange={(event, page) => { handlePage(event, page) }}
+                    count={paginationPages}
+                    variant="outlined"
+                    shape="rounded"
+                    color="primary"
+                />
+            </Container>
         </>
     );
 };

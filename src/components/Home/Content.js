@@ -16,10 +16,10 @@ const useStyles = makeStyles(theme => ({
 
 const Content = () => {
     const classes = useStyles();
-    
+
 
     return (
-        <Grid item md={9}> 
+        <Grid item md={9}>
             <Paper className={classes.paper}>
                 <ProductsList />
             </Paper>

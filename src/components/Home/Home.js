@@ -5,8 +5,6 @@ import Sidebar from './Sidebar';
 import Menu from './Menu';
 import Carousel from '../Carousel/Carousel';
 
-// import Middle from '../Middle/Middle'
-
 
 const Home = (props) => {
     return (
@@ -15,7 +13,6 @@ const Home = (props) => {
             <Content />
             <Menu />
             <Carousel />
-            {/* <Middle /> */}
         </Grid>
     );
 };
