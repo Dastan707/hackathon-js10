@@ -10,6 +10,9 @@ import Register from './components/Register/Register';
 import AuthContextProvider from './contexts/AuthContext';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import Cart from './components/Cart/Cart';
+import Payment from './components/Payment/Payment';
+
 const Routes = () => {
 
     return (
@@ -25,7 +28,9 @@ const Routes = () => {
                 <Route exact path='/add' component={AddProduct} />
                 <Route exact path='/details/:id' component={ProductsDetails} />
                 <Route exact path='/edit' component={EditProduct} />
-            </Switch>
+                <Route exact path="/cart" component={Cart} />
+                <Route exact path='/payment' component={Payment} />
+            </Switch >
             <Footer />
             </Router>
             </AuthContextProvider>

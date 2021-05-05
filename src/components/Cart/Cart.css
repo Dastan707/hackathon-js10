@@ -1,0 +1,23 @@
+td{
+    padding: 15px 0;
+    border-bottom: 1px solid gray;
+}
+
+.cart td{
+    padding: 10px 50px;
+}
+
+.cart{
+    margin-top:30px;
+}
+
+.btn-cart {
+    width: 208px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #d4d0d0;
+    border: 2px solid #bbbbbb;
+    font-weight: 600;
+    margin-bottom: 30px;
+    margin-left: 500px;
+}

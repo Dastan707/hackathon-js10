@@ -1,17 +1,17 @@
-import React, {useContext} from 'react';
-import {Link, useHistory} from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { authContext } from '../../contexts/AuthContext';
 import './LogIn.css'
 
 const LogIn = () => {
-    const { currentUser, loginUser, logoutUser} = useContext(authContext);
+    const { loginUser } = useContext(authContext);
     const history = useHistory();
     let userData = {};
 
-    function handleInputs(event){
+    function handleInputs(event) {
         userData = {
             ...userData,
-            [event.target.name] : event.target.value
+            [event.target.name]: event.target.value
         }
     }
 
@@ -25,7 +25,7 @@ const LogIn = () => {
                         <input onChange={handleInputs} type="text" id="password" name="password" placeholder="password" />
                         <button type="submit">login</button>
                         <Link to='/regist'>
-                        <p className="message">Not registered? Create an account</p>
+                            <p className="message">Not registered? Create an account</p>
                         </Link>
                     </form>
                 </div>

@@ -19,42 +19,43 @@ const useStyles = makeStyles({
   },
   media: {
     height: 140,
-    textAlign:'center'
+    textAlign: 'center'
   },
 });
 
 export default function ProductCard({ item }) {
   const classes = useStyles();
-  const { deleteProduct, editProduct } = useContext(productContext);
+  const { deleteProduct, editProduct, addProductToCart,checkProductInCart } = useContext(productContext);
+
 
   return (
     <Card className={classes.root}>
       <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={item.image}
-          title="Contemplative Reptile"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h6" component="h3">
-            {item.title}
+        <Link to={`/details/${item.id}`}>
+          <CardMedia
+            className={classes.media}
+            image={item.image}
+            title="Contemplative Reptile"
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h6" component="h3">
+              {item.title}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {item.description.slice(0, 200)}...
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {item.description.slice(0,200)}...
-          </Typography>
-        </CardContent>
+          </CardContent>
+        </Link>
       </CardActionArea>
       <CardActions>
-          <Link to='/edit'>
-        <Button onClick={() => editProduct(item.id)} size="small" color="primary">
-          Edit
-        </Button>
-          </Link>
-        <Link to={`/details/${item.id}`}>
-        <Button size="small" color="primary">
-          Details
+        <Link to='/edit'>
+          <Button onClick={() => editProduct(item.id)} size="small" color="primary">
+            Edit
         </Button>
         </Link>
+        <Button  onClick={() => addProductToCart(item)} color={checkProductInCart(item.id)? 'secondary' : 'primary'} size="small" color="primary">
+          Add to cart
+        </Button>
         <Button onClick={() => deleteProduct(item.id)} size="small" color="primary">
           Delete
         </Button>
