@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Cart = () => {
     const classes = useStyles();
-
     const { getCart, cart, changeProductCount } = useContext(productContext);
 
     useEffect(() => {
@@ -79,6 +78,7 @@ const Cart = () => {
                 ) : (<CircularProgress />)}
             </div>
         </>
+
     );
 };
 

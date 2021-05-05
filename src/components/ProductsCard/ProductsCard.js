@@ -20,13 +20,12 @@ const useStyles = makeStyles({
   media: {
     height: 140,
     textAlign: 'center'
-  },
+  }
 });
 
 export default function ProductCard({ item }) {
   const classes = useStyles();
   const { deleteProduct, editProduct, addProductToCart,checkProductInCart } = useContext(productContext);
-
 
   return (
     <Card className={classes.root}>
@@ -58,6 +57,13 @@ export default function ProductCard({ item }) {
         </Button>
         <Button onClick={() => deleteProduct(item.id)} size="small" color="primary">
           Delete
+        </Button>
+        <Button
+           onClick={()=> addProductToCart(item)}
+          size="small" 
+          variant="outlined" 
+          color="secondary">
+        В корзину
         </Button>
       </CardActions>
     </Card>

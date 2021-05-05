@@ -12,7 +12,6 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Cart from './components/Cart/Cart';
 import Payment from './components/Payment/Payment';
-
 const Routes = () => {
 
     return (
