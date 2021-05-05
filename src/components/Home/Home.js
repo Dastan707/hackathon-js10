@@ -1,12 +1,21 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
 import Content from './Content';
+import Sidebar from './Sidebar';
+import Menu from './Menu';
+import Carousel from '../Carousel/Carousel';
+
+// import Middle from '../Middle/Middle'
 
 
-const Home = () => {
+const Home = (props) => {
     return (
         <Grid container>
-            <Content/>
+            <Sidebar {...props} />
+            <Content />
+            <Menu />
+            <Carousel />
+            {/* <Middle /> */}
         </Grid>
     );
 };

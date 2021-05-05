@@ -1,24 +1,33 @@
 import React, { useReducer } from 'react';
 import axios from 'axios';
 import { JSON_API } from '../helpers/constants'
+<<<<<<< HEAD
 import { calcSubPrice, calcTotalPrice , getCountProductInCart} from '../helpers/calcPrice';
+=======
+import { useHistory } from 'react-router';
+
+>>>>>>> 176f0b7a2cff5275f8086fb0df7d602bb9725867
 export const productContext = React.createContext();
 
 const INIT_STATE = {
     productsData: [],
+    paginationPages: 1,
     // productsDetails: null,
     productToEdit: [],
+<<<<<<< HEAD
     searchData: [],
     paginationPages: 1,
     cart: {},
     cartLength: getCountProductInCart()
+=======
+    searchData: []
+
+>>>>>>> 176f0b7a2cff5275f8086fb0df7d602bb9725867
 };
 
 const reducer = (state = INIT_STATE, action) => {
     switch (action.type) {  
-        // case "GET_PRODUCTS":
-        //     return {...state, productsData: action.payload };
-        case "GET_PRODUCTS_DATA":
+        case "GET_PRODUCTS":
             return {...state, productsData: action.payload.data, paginationPages: Math.ceil(action.payload.headers["x-total-count"] / 4)}
         case "GET_PRODUCTS_DETAILS":
             return {...state, productsDetails: action.payload };
@@ -40,18 +49,26 @@ const reducer = (state = INIT_STATE, action) => {
         }
         
     }
+<<<<<<< HEAD
         
         const ProductContextProvider = ({ children }) => {
             const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
 
     const getProductsData = async (history) => {
+=======
+}
+
+const ProductContextProvider = ({ children }) => {
+    const history = useHistory()
+    const  getProducts = async (history) =>{
+>>>>>>> 176f0b7a2cff5275f8086fb0df7d602bb9725867
         const search = new URLSearchParams(history.location.search)
-        search.set('_limit', 4)
+        search.set('_limit', 6)
         history.push(`${history.location.pathname}?${search.toString()}`)
-        let res = await axios(`${JSON_API}?_limit=4&${window.location.search}`)
+        let res = await axios.get(`${JSON_API}${window.location.search}`)
         dispatch({
-            type: "GET_PRODUCTS_DATA",
+            type: "GET_PRODUCTS",
             payload: res
         })
     }
@@ -59,17 +76,10 @@ const reducer = (state = INIT_STATE, action) => {
 
     function postProduct(product) {
         axios.post(`${JSON_API}`, product)
+        
     }
 
 
-
-    // async function getProducts() {
-    //     let { data } = await axios.get(`${JSON_API}`)
-    //     dispatch({
-    //         type: "GET_PRODUCTS",
-    //         payload: data
-    //     });
-    // }
 
     async function getProductsDetails(id) {
         let { data } = await axios.get(`${JSON_API}/${id}`)
@@ -86,7 +96,11 @@ const reducer = (state = INIT_STATE, action) => {
 
     async function deleteProduct(id) {
         await axios.delete(`${JSON_API}/${id}`)
-        getProductsData()
+        let res = await axios.get(`${JSON_API}`)
+        dispatch({
+            type: "GET_PRODUCTS",
+            payload: res
+        })
     }
 
 
@@ -102,7 +116,7 @@ const reducer = (state = INIT_STATE, action) => {
 
     async function search(value){
         let { data } = await axios.get(`${JSON_API}?q=${value}`)
-        console.log(data)
+        // console.log(data)
         dispatch({
             type: "SEARCH",
             payload: data
@@ -186,15 +200,14 @@ const reducer = (state = INIT_STATE, action) => {
     return (
         <productContext.Provider value={{
             productsData: state.productsData,
+            paginationPages: state.paginationPages,
             // productsDetails: state.productsDetails,
             productToEdit: state.productToEdit,
             searchData: state.searchData,
             cart: state.cart,
             cartLength: state.cartLength,
             postProduct,
-            // getProducts,
-            getProductsData,
-            paginationPages: state.paginationPages,
+            getProducts,
             getProductsDetails,
             saveProduct,
             deleteProduct,

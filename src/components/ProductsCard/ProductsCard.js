@@ -11,13 +11,16 @@ import { Link } from 'react-router-dom';
 import './ProductsCard.css'
 import { productContext } from '../../contexts/ProductContext';
 
+
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
+    height: '100%'
   },
   media: {
     height: 180,
-    backgroundSize: "cover"
+    backgroundSize: "cover",
+    textAlign:'center'
   },
 });
 
@@ -34,11 +37,11 @@ export default function ProductCard({ item }) {
           title="Contemplative Reptile"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography gutterBottom variant="h6" component="h3">
             {item.title}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            {item.description}
+            {item.description.slice(0,200)}...
           </Typography>
         </CardContent>
       </CardActionArea>

@@ -3,11 +3,34 @@ import { productContext } from '../../contexts/ProductContext';
 import ProductCard from '../ProductsCard/ProductsCard'
 import { Grid } from '@material-ui/core'
 import Pagination from '@material-ui/lab/Pagination';
-import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
+import CardContent from '@material-ui/core/CardContent';
+import Container from '@material-ui/core/Container';
 
-const ProductsList = () => {
-    // const { getProducts, productsData } = useContext(productContext)
-    const { getProductsData, productsData, paginationPages } = useContext(productContext)
+const useStyles = makeStyles((theme) => ({
+    cardGrid: {
+      paddingTop: theme.spacing(8),
+      paddingBottom: theme.spacing(8),
+    },
+    card: {
+      height: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    cardContent: {
+        flexGrow: 1,
+      height: '100%',
+
+    }
+  }));
+  const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  
+  
+  
+  const ProductsList = () => {
+    const classes = useStyles();
+    const { productsData, paginationPages, getProducts } = useContext(productContext)
     const history = useHistory()
 
     function getPage() {
@@ -21,24 +44,27 @@ const ProductsList = () => {
         search.set('_page', page)
         history.push(`${history.location.pathname}?${search.toString()}`)
         setPage(page)
-        getProductsData(history)
+        getProducts(history)
     }
 
     useEffect(() => {
-        getProductsData(history)}, []
-    )
-
-    // useEffect(() => {
-    //     getProducts()
-    // }, [])
+        getProducts(history)
+    }, [])
     return (
         <>
-        <Grid container spacing ={3}>
+        <Container className={classes.cardGrid} maxWidth="md">
+
+        <Grid container spacing={4}>
             {productsData.map(item => (
+                <Grid  xs={12} sm={6} md={4}>
+                    <CardContent className={classes.cardContent}>
                 <ProductCard key={item.id} item={item} />
-            ))}
+                    </CardContent>
+                </Grid>
+                ))}
         </Grid>
-        <Pagination page={+page} onChange={(event, page) => {handlePage(event, page)}} count={paginationPages} color="primary" />
+        <Pagination page={+page} onChange={(event, page) => {handlePage(event, page)}} count={paginationPages} variant="outlined" shape="rounded" color="primary" />
+        </Container>
         </>
     );
 };
